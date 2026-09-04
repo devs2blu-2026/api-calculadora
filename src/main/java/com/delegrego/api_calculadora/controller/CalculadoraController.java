@@ -1,0 +1,38 @@
+package com.delegrego.api_calculadora.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.delegrego.api_calculadora.dto.CalculadoraRequisicao;
+import com.delegrego.api_calculadora.dto.CalculadoraResposta;
+import com.delegrego.api_calculadora.service.CalculadoraService;
+
+@RestController
+public class CalculadoraController {
+
+	@Autowired
+	CalculadoraService servico;
+
+	@PostMapping("/calculadora/somar")
+	public CalculadoraResposta somar(@RequestBody CalculadoraRequisicao requisicao) {
+		return servico.somar(requisicao);
+	}
+
+	@PostMapping("/calculadora/subtrair")
+	public CalculadoraResposta subtrair(@RequestBody CalculadoraRequisicao requisicao) {
+		return servico.subtrair(requisicao);
+	}
+
+	@PostMapping("/calculadora/multiplicar")
+	public CalculadoraResposta multiplicar(@RequestBody CalculadoraRequisicao requisicao) {
+		return servico.multiplicar(requisicao);
+	}
+
+	@PostMapping("/calculadora/dividir")
+	public CalculadoraResposta dividir(@RequestBody CalculadoraRequisicao requisicao) {
+		return servico.dividir(requisicao);
+	}
+
+}
