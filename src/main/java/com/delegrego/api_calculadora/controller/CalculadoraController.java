@@ -14,8 +14,12 @@ import com.delegrego.api_calculadora.service.CalculadoraService;
 @RequestMapping("/calculadora")
 public class CalculadoraController {
 
-	@Autowired
-	CalculadoraService servico;
+	private final CalculadoraService servico;
+
+	// @Autowired
+	public CalculadoraController(CalculadoraService servico) {
+		this.servico = servico;
+	}
 
 	@PostMapping("/somar")
 	public CalculadoraResposta somar(@RequestBody CalculadoraRequisicao requisicao) {
